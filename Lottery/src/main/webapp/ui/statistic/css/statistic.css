@@ -1,0 +1,40 @@
+div {
+	margin-top: 5px;
+}
+
+input {
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+}
+
+.oneblock {
+	display: inline-block;
+	width: 1000px;
+}
+
+.label {
+	font-size: 20px;
+}
+
+.input_div {
+	display: inline-block;
+	width: 30px;
+	margin-right: 10px;
+}
+
+.count_input_div {
+	display: inline-block;
+	width: 50px;
+	margin-right: 10px;
+}
+
+button {
+	height: 30px;
+	width: 55px;
+}
+
+.data_div {
+	display: inline-block;
+	width: 250px;
+}

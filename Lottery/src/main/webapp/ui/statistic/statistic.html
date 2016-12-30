@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link>
+<link rel="stylesheet" href="./css/statistic.css">
+<script type="text/javascript" src="../jquery-2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery-2.1.1/util.js"></script>
+<script type="text/javascript" src="./js/statistic.js"></script>
+</head>
+<body>
+	<div>
+		<a href="/ui/maintain/maintain.html">维护历史数据</a>
+	</div>
+	<div>
+		<label class="label">类型：</label>
+		<div class="input_div">
+			<select id="type">
+				<option value="0">3D</option>
+				<option value="1">组合</option>
+			</select>
+		</div>
+	</div>
+	<div class="oneblock">
+		<label class="label">统计期数：</label>
+		<div class="count_input_div">
+			<input style="width: 50px;" type="text" id="count">
+		</div>
+		<label class="label">第一位：</label>
+		<div class="input_div">
+			<input type="text" id="first">
+		</div>
+		<label class="label">第二位：</label>
+		<div class="input_div">
+			<input type="text" id="second">
+		</div>
+		<label class="label">第三位：</label>
+		<div class="input_div">
+			<input type="text" id="last">
+		</div>
+		<label class="label">第四位：</label>
+		<div class="input_div">
+			<input type="text" id="four">
+		</div>
+		<label class="label">第五位：</label>
+		<div class="input_div">
+			<input type="text" id="five">
+		</div>
+		<div class="input_div">
+			<button onclick="submit()">统计</button>
+		</div>
+	</div>
+	<div id="grandFirst">
+		<p>第一位</p>
+		<div id="first" class="data_div">
+			<!-- <p>后一期第一位出现次数</p> -->
+			<ul id="grandFirst_first">
+			</ul>
+		</div>
+		<div id="second" class="data_div">
+			<!-- <p>后一期第二位出现次数</p> -->
+			<ul id="grandFirst_second">
+			</ul>
+		</div>
+		<div id="last" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFirst_last">
+			</ul>
+		</div>
+		<div id="four" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFirst_four">
+			</ul>
+		</div>
+		<div id="five" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFirst_five">
+			</ul>
+		</div>
+	</div>
+	<div id="grandSecond">
+		<p>第二位</p>
+		<div id="first" class="data_div">
+			<!-- <p>后一期第一位出现次数</p> -->
+			<ul id="grandSecond_first">
+			</ul>
+		</div>
+		<div id="second" class="data_div">
+			<!-- <p>后一期第二位出现次数</p> -->
+			<ul id="grandSecond_second">
+			</ul>
+		</div>
+		<div id="last" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandSecond_last">
+			</ul>
+		</div>
+		<div id="four" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandSecond_four">
+			</ul>
+		</div>
+		<div id="five" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandSecond_five">
+			</ul>
+		</div>
+	</div>
+	<div id="grandLast">
+		<p>第三位</p>
+		<div id="first" class="data_div">
+			<!-- <p>后一期第一位出现次数</p> -->
+			<ul id="grandLast_first">
+			</ul>
+		</div>
+		<div id="second" class="data_div">
+			<!-- <p>后一期第二位出现次数</p> -->
+			<ul id="grandLast_second">
+			</ul>
+		</div>
+		<div id="last" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandLast_last">
+			</ul>
+		</div>
+		<div id="four" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandLast_four">
+			</ul>
+		</div>
+		<div id="five" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandLast_five">
+			</ul>
+		</div>
+	</div>
+	<div id="grandFour">
+		<p>第四位</p>
+		<div id="first" class="data_div">
+			<!-- <p>后一期第一位出现次数</p> -->
+			<ul id="grandFour_first">
+			</ul>
+		</div>
+		<div id="second" class="data_div">
+			<!-- <p>后一期第二位出现次数</p> -->
+			<ul id="grandFour_second">
+			</ul>
+		</div>
+		<div id="last" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFour_last">
+			</ul>
+		</div>
+		<div id="four" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFour_four">
+			</ul>
+		</div>
+		<div id="five" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFour_five">
+			</ul>
+		</div>
+	</div>
+	<div id="grandLast">
+		<p>第五位</p>
+		<div id="first" class="data_div">
+			<!-- <p>后一期第一位出现次数</p> -->
+			<ul id="grandFive_first">
+			</ul>
+		</div>
+		<div id="second" class="data_div">
+			<!-- <p>后一期第二位出现次数</p> -->
+			<ul id="grandFive_second">
+			</ul>
+		</div>
+		<div id="last" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFive_last">
+			</ul>
+		</div>
+		<div id="four" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFive_four">
+			</ul>
+		</div>
+		<div id="five" class="data_div">
+			<!-- <p>后一期第三位出现次数</p> -->
+			<ul id="grandFive_five">
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mvc.dao.LotteryDAO">
+	<insert id="add" parameterType="com.demo.mvc.bean.Lottery"
+		flushCache="true">
+		INSERT INTO history_data
+		(type,period,first,second,last,four,five) 
+		VALUES
+		(#{type},#{period},#{first},#{second},#{last},#{four},#{five})
+	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM 
+		history_data 
+		WHERE
+		period=#{period} and type = #{type}
+	</delete>
+	<update id="modify" parameterType="com.demo.mvc.bean.Lottery">
+		UPDATE history_data SET
+		first=#{first},second=#{second},last=#{last},four=#{four},five=#{five}
+		WHERE 
+		period=#{period} and type = #{type}
+	</update>
+	<select id="fetch" resultType="com.demo.mvc.bean.Lottery"
+		parameterType="java.util.Map">
+		SELECT * FROM history_data
+		where type=#{type}
+		<if test="startPeriod > 0">
+			and period &gt;= #{startPeriod}
+		</if>
+		<if test="endPeriod > 0">
+			and period &lt;= #{endPeriod}
+		</if>
+		order by period desc
+	</select>
+
+	<select id="fetchByPeriod" parameterType="java.lang.Integer"
+		resultType="com.demo.mvc.bean.Lottery">
+		SELECT * FROM 
+		history_data
+		where 
+		period = #{period} and type = #{type}
+	</select>
+
+	<select id="fetchByCount" parameterType="java.lang.Integer"
+		resultType="com.demo.mvc.bean.Lottery">
+		SELECT * FROM history_data
+		where type = #{type} 
+		order by period desc limit 0,#{count}
+	</select>
+</mapper>
