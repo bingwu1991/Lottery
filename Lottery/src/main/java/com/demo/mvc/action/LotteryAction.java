@@ -34,9 +34,7 @@ public class LotteryAction {
 	 * statistic lottery data
 	 * 
 	 * @param count size of period
-	 * @param first first number
-	 * @param second second number
-	 * @param last last number
+	 * @param lottery statistic lottery info
 	 * @return
 	 */
 	@RequestMapping("/statistic")
