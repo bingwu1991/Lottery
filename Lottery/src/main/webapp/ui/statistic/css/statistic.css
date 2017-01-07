@@ -23,6 +23,16 @@ input {
 	margin-right: 10px;
 }
 
+.period_input_div {
+	display: inline-block;
+	width: 100px;
+	margin-right: 10px;
+}
+
+.period_input {
+	width: 100px;
+}
+
 .count_input_div {
 	display: inline-block;
 	width: 50px;
@@ -36,5 +46,5 @@ button {
 
 .data_div {
 	display: inline-block;
-	width: 250px;
+	width: 200px;
 }

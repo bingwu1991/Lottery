@@ -87,11 +87,16 @@ public class LotteryServiceImpl implements LotteryService {
 	 * @return
 	 * @return
 	 * @see com.demo.mvc.service.LotteryService#statistic(Integer, Integer,
-	 *      Integer, Integer,Integer,Integer)
+	 *      Integer, Lottery)
 	 */
 	@Override
-	public StatisticResult statistic(Integer count, Lottery lottery) {
-		List<Lottery> lotteries = this.fetchByCount(count, lottery.getType());
+	public StatisticResult statistic(Integer count, Integer startPeriod, Integer endPeriod, Lottery lottery) {
+		List<Lottery> lotteries;
+		if (count != null) {
+			 lotteries = this.fetchByCount(count, lottery.getType());
+		}else{
+			lotteries = this.fetch(startPeriod, endPeriod, lottery.getType());
+		}
 		Collections.reverse(lotteries);
 		Integer type = lottery.getType();
 		Map<String, Map<String, Integer>> firstResult = this.statistic(lotteries, lottery.getFirst(),
@@ -133,23 +138,23 @@ public class LotteryServiceImpl implements LotteryService {
 			int value = -1;
 
 			switch (inputType) {
-				case InputTypeConstants.first :
-					value = lottery.getFirst();
-					break;
-				case InputTypeConstants.second :
-					value = lottery.getSecond();
-					break;
-				case InputTypeConstants.last :
-					value = lottery.getLast();
-					break;
-				case InputTypeConstants.four :
-					value = lottery.getFour();
-					break;
-				case InputTypeConstants.five :
-					value = lottery.getFive();
-					break;
-				default :
-					break;
+			case InputTypeConstants.first:
+				value = lottery.getFirst();
+				break;
+			case InputTypeConstants.second:
+				value = lottery.getSecond();
+				break;
+			case InputTypeConstants.last:
+				value = lottery.getLast();
+				break;
+			case InputTypeConstants.four:
+				value = lottery.getFour();
+				break;
+			case InputTypeConstants.five:
+				value = lottery.getFive();
+				break;
+			default:
+				break;
 			}
 
 			if (inputValue == value) {
@@ -190,14 +195,14 @@ public class LotteryServiceImpl implements LotteryService {
 		if (four != null) {
 			MapValueComparator fourCompare = new MapValueComparator(four);
 			Map<String, Integer> treeFour = new TreeMap<String, Integer>(fourCompare);
-			treeLast.putAll(four);
+			treeFour.putAll(four);
 			result.put(InputTypeEnums.four.name, treeFour);
 		}
 
 		if (five != null) {
 			MapValueComparator fiveCompare = new MapValueComparator(five);
 			Map<String, Integer> treeFive = new TreeMap<String, Integer>(fiveCompare);
-			treeLast.putAll(five);
+			treeFive.putAll(five);
 			result.put(InputTypeEnums.five.name, treeFive);
 		}
 

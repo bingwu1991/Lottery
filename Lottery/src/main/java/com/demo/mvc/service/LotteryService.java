@@ -53,8 +53,10 @@ public interface LotteryService {
 	 * analyse history data
 	 * 
 	 * @param count
+	 * @param startPeriod
+	 * @param endPeriod
 	 * @param lottery
 	 */
-	public StatisticResult statistic(Integer count, Lottery lottery);
+	public StatisticResult statistic(Integer count, Integer startPeriod, Integer endPeriod, Lottery lottery);
 
 }

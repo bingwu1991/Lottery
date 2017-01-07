@@ -18,9 +18,11 @@ public class MapValueComparator implements Comparator<String> {
 
 	@Override
 	public int compare(String key1, String key2) {
-		if (map.get(key1) > map.get(key2)) {
+		Integer value1 = map.get(key1) == null?0:map.get(key1);
+		Integer value2 = map.get(key2) == null?0:map.get(key2);
+		if (value1 > value2) {
 			return -1;
-		} else if (map.get(key1) == map.get(key2)) {
+		} else if (value1 == value2) {
 			return key1.compareTo(key2);
 		} else {
 			return 1;

@@ -33,15 +33,17 @@ public class LotteryAction {
 	/**
 	 * statistic lottery data
 	 * 
-	 * @param count size of period
-	 * @param lottery statistic lottery info
+	 * @param count
+	 *            size of period
+	 * @param lottery
+	 *            statistic lottery info
 	 * @return
 	 */
 	@RequestMapping("/statistic")
 	@ResponseBody
-	public Object statistic(Integer count, Lottery lottery) {
+	public Object statistic(Integer count, Integer startPeriod, Integer endPeriod, Lottery lottery) {
 		logger.info("statistic");
-		StatisticResult result = lotteryService.statistic(count, lottery);
+		StatisticResult result = lotteryService.statistic(count, startPeriod, endPeriod, lottery);
 
 		JSONObject json = new JSONObject();
 		json.put("grandFirst", result.getFirstResult());
@@ -56,10 +58,14 @@ public class LotteryAction {
 	/**
 	 * add period lottery data
 	 * 
-	 * @param period lottery period
-	 * @param first first number
-	 * @param second second number
-	 * @param last last number
+	 * @param period
+	 *            lottery period
+	 * @param first
+	 *            first number
+	 * @param second
+	 *            second number
+	 * @param last
+	 *            last number
 	 * @return
 	 */
 	@RequestMapping("/addPeriod")
@@ -71,8 +77,8 @@ public class LotteryAction {
 
 	@RequestMapping("/delete")
 	@ResponseBody
-	public String delete(Integer period,Integer type) {
-		lotteryService.delete(period,type);
+	public String delete(Integer period, Integer type) {
+		lotteryService.delete(period, type);
 		return "";
 	}
 
@@ -84,8 +90,8 @@ public class LotteryAction {
 	@RequestMapping("/query")
 	@ResponseBody
 	public List<Lottery> query(@RequestParam(required = false) Integer startPeriod,
-			@RequestParam(required = false) Integer endPeriod,Integer type) {
-		List<Lottery> lotteries = lotteryService.fetch(startPeriod, endPeriod,type);
+			@RequestParam(required = false) Integer endPeriod, Integer type) {
+		List<Lottery> lotteries = lotteryService.fetch(startPeriod, endPeriod, type);
 		return lotteries;
 	}
 

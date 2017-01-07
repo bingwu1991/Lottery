@@ -6,9 +6,11 @@ function submit() {
 	var five = $('#five').val();
 	var count = $('#count').val();
 	var type = $('#type').val();
-	var data = 'count=' + count + '&first=' + first + '&second=' + second
-			+ '&last=' + last + '&four=' + four + '&five=' + five + '&type='
-			+ type;
+	var startPeriod = $('#startPeriod').val();
+	var endPeriod = $('#endPeriod').val();
+	var data = 'count=' + count + '&startPeriod=' + startPeriod + '&endPeriod='
+			+ endPeriod + '&first=' + first + '&second=' + second + '&last='
+			+ last + '&four=' + four + '&five=' + five + '&type=' + type;
 	$('li').remove();
 
 	$.ajax({
@@ -42,7 +44,7 @@ function parseJson(data, grandparent, parent) {
 				}
 			} else {
 				$('#' + grandparent + '_' + parent).append(
-						'<li>' + name.substr(1) + '出现' + value + '次</li>')
+						'<li>' + name.substr(1) + ' -> ' + value + '</li>')
 			}
 		}
 	});
